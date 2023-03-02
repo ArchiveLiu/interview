@@ -103,6 +103,18 @@ export default {
       this.$router.push('/arrayMerging')
   }
   },
+   beforeRouteLeave(to, from, next) {
+    console.log(to,from,'dddd');
+    if(to.path.indexOf("/signup") !== -1){
+      if(this.toTradeFlags){
+        next()
+      }else{
+        alert('请勿手动修改地址栏，请点权限页面按钮')
+        next(false)
+      }
+    }else{
+      next();
+    }}
 };
 </script>
 

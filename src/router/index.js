@@ -36,12 +36,21 @@ const routes = [
   {
     path: '/',
     name: 'HelloWord', 
-    component: HelloWord
+    component: HelloWord,
+
   },
   {
     path: '/signup',
     name: 'signup', 
-    component: Signup 
+    component: Signup ,
+    beforeEnter(to, from, next) {
+      console.log(to,from,'ffffaaaa');
+      if (to.path === '/HelloWord') {
+          next()
+      } else {
+          next('/notFound')
+      }
+  }
   },
   {
     path: '/notFound', 
@@ -55,6 +64,10 @@ const routes = [
   }
 ]
  
+// router.beforeEach((to,from,next)=>{
+	
+// })
+
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
