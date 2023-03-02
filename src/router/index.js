@@ -27,16 +27,16 @@ import VueRouter from 'vue-router'
 import HelloWord from "../components/HelloWorld.vue";
 import Signup from '../view/signup.vue'
 import NotFound from '../view/notFound.vue'
-
+import ArrayMerging from '../view/arrayMerging.vue'
  
-//在vue中使用路由功能
+
 Vue.use(VueRouter)
  
 const routes = [
   {
-    path: '/', //url路径
-    name: 'HelloWord', //给当前的规则起名字
-    component: HelloWord//匹配的路由页面
+    path: '/',
+    name: 'HelloWord', 
+    component: HelloWord
   },
   {
     path: '/signup',
@@ -48,6 +48,11 @@ const routes = [
     name: 'notFound', 
     component: NotFound 
   },
+  {
+    path:'/arrayMerging',
+    name: 'arrayMerging', 
+    component: ArrayMerging 
+  }
 ]
  
 const router = new VueRouter({

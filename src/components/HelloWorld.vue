@@ -60,11 +60,14 @@
       </el-col>
     </el-row>
 
-    <el-button type="primary" @click="signup_page">主要按钮</el-button>
+    <el-button type="primary" @click="signup_page">权限页面按钮</el-button>
+    <el-button type="primary" @click="array_page">数据处理页面按钮</el-button>
+     <el-button type="primary">promise和async优化在untils文件夹中</el-button>
   </div>
 </template>
 
 <script>
+import {signup} from '../api/api'
 export default {
   name: "HelloWorld",
   props: {
@@ -86,8 +89,19 @@ export default {
   },
   methods: {
     signup_page(){
-          this.$router.push({ path: '/signup'});
-    }
+       signup().then(res=>{
+          if(res.data.code=='200'&& res.data.role=='admin'){
+            this.$router.push('/signup')
+          }else{
+             this.$router.push('/notFound')
+          }
+       }).catch(err=>{
+        this.$router.push('/notFound')
+       })  
+    },
+  array_page(){
+      this.$router.push('/arrayMerging')
+  }
   },
 };
 </script>
